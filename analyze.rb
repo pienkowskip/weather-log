@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# encoding: UTF-8
 
 require 'json'
 require 'nokogiri'
@@ -55,7 +56,7 @@ end
 sink = Sink.new
 logger = Logger.new(STDERR)
 
-files = Dir.glob('./meteoblue/*.json')
+files = Dir.glob('./snapshots/meteoblue/*.json')
 files.sort!
 files.each do |path|
   md = path.match(/\/(\d{4}\-\d{2}-\d{2}T\d{6})-([a-z0-9_]+)\.json\z/)
@@ -72,7 +73,7 @@ files.each do |path|
   end
 end
 
-files = Dir.glob('./wunderground/*.json')
+files = Dir.glob('./snapshots/wunderground/*.json')
 files.sort!
 files.each do |path|
   md = path.match(/\/(\d{4}\-\d{2}-\d{2}T\d{6})-([a-z0-9_]+)\.json\z/)
@@ -93,7 +94,7 @@ files.each do |path|
   end
 end
 
-files = Dir.glob('./meteocentrale/*.html')
+files = Dir.glob('./snapshots/meteocentrale/*.html')
 files.sort!
 files.each do |path|
   md = path.match(/\/(\d{4}\-\d{2}-\d{2}T\d{6})-([a-z0-9_]+)\.html\z/)
@@ -111,7 +112,7 @@ files.each do |path|
 end
 
 
-files = Dir.glob('./topr/*.xml')
+files = Dir.glob('./snapshots/topr/*.xml')
 files.sort!
 location_mapper = {
     'gor' => 'goryczkowa',

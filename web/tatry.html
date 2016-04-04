@@ -11,7 +11,7 @@
                     useUTC: false
                 }
             });
-            $.getJSON('http://vps171666.ovh.net/weather_log-data.php', function (data) {
+            $.getJSON('http://vps171666.ovh.net/weather_log/data.json', function (data) {
                 $('#temperature_chart').highcharts({
                     chart: {type: 'spline', zoomType: 'x'},
                     title: {text: 'Temperatury w Tatrach'},

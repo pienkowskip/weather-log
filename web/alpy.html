@@ -1,0 +1,74 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script>
+        $(function () {
+            Highcharts.setOptions({
+                global: {
+                    useUTC: false
+                }
+            });
+            $.getJSON('http://vps171666.ovh.net/weather_log/data.json', function (data) {
+                $('#temperature_chart').highcharts({
+                    chart: {type: 'spline', zoomType: 'x'},
+                    title: {text: 'Temperatury w Alpach'},
+                    xAxis: {type: 'datetime', title: {text: 'Data'}},
+                    yAxis: {title: {text: 'Temperatura (°C)'}},
+                    tooltip: {
+                        headerFormat: '<b>{series.name}</b><br>',
+                        pointFormat: '{point.x:%e. %b, %a, %H:%M}: <b>{point.y:.1f}°C</b>'
+                    },
+                    plotOptions: {
+                        spline: {
+                            marker: {enabled: true, radius: 2.4}
+                        }
+                    },
+                    series: [
+                        {name: 'Meteoblue - Jungfraujoch (3576 m)', data: data['meteoblue.jungfraujoch.temperature']},
+                        {name: 'Meteoblue - Pian Rosa (3488 m)', data: data['meteoblue.pian_rosa.temperature']},
+                        {name: 'Weather Underground - Jungfraujoch (3580 m)', data: data['wunderground.jungfraujoch.temperature']},
+                        {name: 'Weather Underground - Pian Rosa (3488 m)', data: data['wunderground.pian_rosa.temperature']},
+                        {name: 'Weather Underground - Grindelwald (1095 m)', data: data['wunderground.grindelwald.temperature']},
+                        {name: 'Meteocentrale - Jungfraujoch (3580 m)', data: data['meteocentrale.jungfraujoch.temperature']},
+                        {name: 'Meteocentrale - Pian Rosa (3488 m)', data: data['meteocentrale.pian_rosa.temperature']},
+                        {name: 'Meteocentrale - Grindelwald (1205 m)', data: data['meteocentrale.grindelwald.temperature']}
+                    ]
+                });
+
+                $('#wind_chart').highcharts({
+                    chart: {type: 'spline', zoomType: 'x'},
+                    title: {text: 'Prędkości wiatrów w Alpach'},
+                    xAxis: {type: 'datetime', title: {text: 'Data'}},
+                    yAxis: {title: {text: 'Prędkość wiatru (km/h)'}},
+                    tooltip: {
+                        headerFormat: '<b>{series.name}</b><br>',
+                        pointFormat: '{point.x:%e. %b, %a, %H:%M}: <b>{point.y:.1f} km/h</b>'
+                    },
+                    plotOptions: {
+                        spline: {
+                            marker: {enabled: true, radius: 2.4}
+                        }
+                    },
+                    series: [
+                        {name: 'Meteoblue - Jungfraujoch (3576 m)', data: data['meteoblue.jungfraujoch.wind_speed']},
+                        {name: 'Meteoblue - Pian Rosa (3488 m)', data: data['meteoblue.pian_rosa.wind_speed']},
+                        {name: 'Weather Underground - Jungfraujoch (3580 m)', data: data['wunderground.jungfraujoch.wind_speed']},
+                        {name: 'Weather Underground - Pian Rosa (3488 m)', data: data['wunderground.pian_rosa.wind_speed']},
+                        {name: 'Weather Underground - Grindelwald (1095 m)', data: data['wunderground.grindelwald.wind_speed']},
+                        {name: 'Meteocentrale - Jungfraujoch (3580 m)', data: data['meteocentrale.jungfraujoch.wind_speed']},
+                        {name: 'Meteocentrale - Pian Rosa (3488 m)', data: data['meteocentrale.pian_rosa.wind_speed']},
+                        {name: 'Meteocentrale - Grindelwald (1205 m)', data: data['meteocentrale.grindelwald.wind_speed']}
+                    ]
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="temperature_chart" style="min-width: 640px; height: 640px; margin: 0 auto"></div>
+<div id="wind_chart" style="min-width: 640px; height: 640px; margin: 0 auto"></div>
+</body>
+</html>
