@@ -1,0 +1,76 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script>
+        $(function () {
+            Highcharts.setOptions({
+                global: {
+                    useUTC: false
+                }
+            });
+            $.getJSON('http://vps171666.ovh.net/weather_log-data.php', function (data) {
+                $('#temperature_chart').highcharts({
+                    chart: {type: 'spline', zoomType: 'x'},
+                    title: {text: 'Temperatury w Tatrach'},
+                    xAxis: {type: 'datetime', title: {text: 'Data'}},
+                    yAxis: {title: {text: 'Temperatura (°C)'}},
+                    tooltip: {
+                        headerFormat: '<b>{series.name}</b><br>',
+                        pointFormat: '{point.x:%e. %b, %a, %H:%M}: <b>{point.y:.1f}°C</b>'
+                    },
+                    plotOptions: {
+                        spline: {
+                            marker: {enabled: true, radius: 2.4}
+                        }
+                    },
+                    series: [
+                        {name: 'TOPR - Schronisko Moko', data: data['topr.moko.temperature']},
+                        {name: 'TOPR - Schronisko 5st', data: data['topr.piec_stawow.temperature']},
+                        {name: 'TOPR - Goryczkowa', data: data['topr.goryczkowa.temperature']},
+                        {name: 'Meteocentrale - Łomnica', data: data['meteocentrale.lomnica.temperature'], visible: false},
+                        {name: 'Weather Undeground - Łomnica', data: data['wunderground.lomnica.temperature']},
+                        {name: 'Meteoblue - Schronisko Moko (1410 m)', data: data['meteoblue.moko.temperature'], visible: false},
+                        {name: 'Meteoblue - Kasprowy Wierch (1987 m)', data: data['meteoblue.kasprowy.temperature'], visible: false},
+                        {name: 'Meteoblue - Rysy (2503 m)', data: data['meteoblue.rysy.temperature'], visible: false},
+                        {name: 'Meteoblue - Łomnica (2634 m)', data: data['meteoblue.lomnica.temperature'], visible: false}
+                    ]
+                });
+
+                $('#wind_chart').highcharts({
+                    chart: {type: 'spline', zoomType: 'x'},
+                    title: {text: 'Prędkości wiatrów w Tatrach'},
+                    xAxis: {type: 'datetime', title: {text: 'Data'}},
+                    yAxis: {title: {text: 'Prędkość wiatru (km/h)'}},
+                    tooltip: {
+                        headerFormat: '<b>{series.name}</b><br>',
+                        pointFormat: '{point.x:%e. %b, %a, %H:%M}: <b>{point.y:.1f} km/h</b>'
+                    },
+                    plotOptions: {
+                        spline: {
+                            marker: {enabled: true, radius: 2.4}
+                        }
+                    },
+                    series: [
+                        {name: 'TOPR - Schornisko 5st - max', data: data['topr.piec_stawow.wind_speed_max']},
+                        {name: 'TOPR - Schronisko 5st - średnia', data: data['topr.piec_stawow.wind_speed_avg']},
+                        {name: 'TOPR - Schronisko Moko - max', data: data['topr.moko.wind_speed_max']},
+                        {name: 'TOPR - Schronisko Moko - średnia', data: data['topr.moko.wind_speed_avg']},
+                        {name: 'Meteocentrale - Łomnica', data: data['meteocentrale.lomnica.wind_speed'], visible: false},
+                        {name: 'Weather Undeground - Łomnica', data: data['wunderground.lomnica.wind_speed']},
+                        {name: 'Meteoblue - Schronisko Moko (1410 m)', data: data['meteoblue.moko.wind_speed'], visible: false},
+                        {name: 'Meteoblue - Rysy (2503 m)', data: data['meteoblue.rysy.wind_speed'], visible: false},
+                        {name: 'Meteoblue - Łomnica (2634 m)', data: data['meteoblue.lomnica.wind_speed'], visible: false}
+                    ]
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="temperature_chart" style="min-width: 640px; height: 640px; margin: 0 auto"></div>
+<div id="wind_chart" style="min-width: 640px; height: 640px; margin: 0 auto"></div>
+</body>
+</html>
