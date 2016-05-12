@@ -11,7 +11,7 @@
                     useUTC: false
                 }
             });
-            $.getJSON('http://vps171666.ovh.net/weather_log/data.json', function (data) {
+            $.getJSON('/weather-log/data.json', function (data) {
                 $('#temperature_chart').highcharts({
                     chart: {type: 'spline', zoomType: 'x'},
                     title: {text: 'Temperatury w Alpach'},
@@ -32,9 +32,9 @@
                         {name: 'Weather Underground - Jungfraujoch (3580 m)', data: data['wunderground.jungfraujoch.temperature']},
                         {name: 'Weather Underground - Pian Rosa (3488 m)', data: data['wunderground.pian_rosa.temperature']},
                         {name: 'Weather Underground - Grindelwald (1095 m)', data: data['wunderground.grindelwald.temperature']},
-                        {name: 'Meteocentrale - Jungfraujoch (3580 m)', data: data['meteocentrale.jungfraujoch.temperature']},
-                        {name: 'Meteocentrale - Pian Rosa (3488 m)', data: data['meteocentrale.pian_rosa.temperature']},
-                        {name: 'Meteocentrale - Grindelwald (1205 m)', data: data['meteocentrale.grindelwald.temperature']}
+                        {name: 'Meteocentrale - Jungfraujoch (3580 m)', data: data['meteocentrale.jungfraujoch.temperature'], visible: false},
+                        {name: 'Meteocentrale - Pian Rosa (3488 m)', data: data['meteocentrale.pian_rosa.temperature'], visible: false},
+                        {name: 'Meteocentrale - Grindelwald (1205 m)', data: data['meteocentrale.grindelwald.temperature'], visible: false}
                     ]
                 });
 
@@ -56,7 +56,7 @@
                         {name: 'Meteoblue - Jungfraujoch (3576 m)', data: data['meteoblue.jungfraujoch.wind_speed']},
                         {name: 'Meteoblue - Pian Rosa (3488 m)', data: data['meteoblue.pian_rosa.wind_speed']},
                         {name: 'Weather Underground - Jungfraujoch (3580 m)', data: data['wunderground.jungfraujoch.wind_speed']},
-                        {name: 'Weather Underground - Pian Rosa (3488 m)', data: data['wunderground.pian_rosa.wind_speed']},
+                        {name: 'Weather Underground - Pian Rosa (3488 m)', data: data['wunderground.pian_rosa.wind_speed'], visible: false},
                         {name: 'Weather Underground - Grindelwald (1095 m)', data: data['wunderground.grindelwald.wind_speed']},
                         {name: 'Meteocentrale - Jungfraujoch (3580 m)', data: data['meteocentrale.jungfraujoch.wind_speed']},
                         {name: 'Meteocentrale - Pian Rosa (3488 m)', data: data['meteocentrale.pian_rosa.wind_speed']},

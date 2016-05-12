@@ -3,7 +3,10 @@
 set +e
 
 date=`date '+%FT%H%M%S'`
-wget -nv -O "snapshots/topr/${date}.xml" 'http://www.test.tatrynet.pl/pogoda/weatherMiddleware_v1.0/xml/lokalizacje1.xml'
+wget -nv -O "snapshots/topr/${date}.xml" 'http://www.pogoda.tatrynet.pl/pogoda/weatherMiddleware_v1.0/xml/lokalizacje1.xml'
+
+date=`date '+%FT%H%M%S'`
+metaf2xml-1.58/metaf.pl lang=en type_synop=wmo msg_synop=11930 format=xml > "snapshots/synop/${date}-lomnica.xml"
 
 date=`date '+%FT%H%M%S'`
 wget -nv -O "snapshots/meteoblue/${date}-rysy.json" 'http://my.meteoblue.com/dataApi/dispatch.pl?apikey=41f2dd49fb6a&type=json_7day_3h_firstday&lat=49.179444&lon=20.088333&asl=2503'
@@ -25,4 +28,8 @@ wget -nv -O "snapshots/wunderground/${date}-jungfraujoch.json" 'http://api.wunde
 wget -nv -O "snapshots/wunderground/${date}-pian_rosa.json" 'http://api.wunderground.com/api/cdd30e71cfa957a1/conditions/q/zmw:00000.1.16052.json'
 wget -nv -O "snapshots/wunderground/${date}-grindelwald.json" 'http://api.wunderground.com/api/cdd30e71cfa957a1/conditions/q/pws:IGRINDEL11.json'
 
-./analyze.rb > web/data.json
+set -e
+tfile=`tempfile`
+./analyze.rb > "$tfile"
+mv "$tfile" web/data.json
+chmod 644 web/data.json

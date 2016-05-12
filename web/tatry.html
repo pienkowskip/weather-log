@@ -11,7 +11,7 @@
                     useUTC: false
                 }
             });
-            $.getJSON('http://vps171666.ovh.net/weather_log/data.json', function (data) {
+            $.getJSON('/weather-log/data.json', function (data) {
                 $('#temperature_chart').highcharts({
                     chart: {type: 'spline', zoomType: 'x'},
                     title: {text: 'Temperatury w Tatrach'},
@@ -54,9 +54,9 @@
                         }
                     },
                     series: [
-                        {name: 'TOPR - Schornisko 5st - max', data: data['topr.piec_stawow.wind_speed_max']},
+                        {name: 'TOPR - Schornisko 5st - max', data: data['topr.piec_stawow.wind_speed_max'], visible: false},
                         {name: 'TOPR - Schronisko 5st - średnia', data: data['topr.piec_stawow.wind_speed_avg']},
-                        {name: 'TOPR - Schronisko Moko - max', data: data['topr.moko.wind_speed_max']},
+                        {name: 'TOPR - Schronisko Moko - max', data: data['topr.moko.wind_speed_max'], visible: false},
                         {name: 'TOPR - Schronisko Moko - średnia', data: data['topr.moko.wind_speed_avg']},
                         {name: 'Meteocentrale - Łomnica', data: data['meteocentrale.lomnica.wind_speed'], visible: false},
                         {name: 'Weather Undeground - Łomnica', data: data['wunderground.lomnica.wind_speed']},

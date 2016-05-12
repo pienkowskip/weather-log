@@ -84,6 +84,7 @@ files.each do |path|
     logger.warn { 'Invalid Weather Underground file [%s].' % path }
     next
   end
+  begin
   current = json.fetch('current_observation')
   timestamp = Time.at(Integer(current.fetch('observation_epoch')))
   [
@@ -91,6 +92,9 @@ files.each do |path|
       ['temp_c', 'temperature']
   ].each do |from, to|
     sink.add(timestamp, ['wunderground', location, to].join('.'), current[from])
+  end
+  rescue
+    logger.warn { 'Parsing error Weather Underground file [%s].' % path }
   end
 end
 
