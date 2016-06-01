@@ -1,0 +1,4 @@
+temperature:
+  text_id: temperature
+  name: Temperature
+  unit: °C
