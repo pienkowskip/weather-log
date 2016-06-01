@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20160517174317) do
     t.decimal "latitude"
     t.decimal "longitude"
     t.decimal "elevation"
+    t.index ["text_id"], name: "index_locations_on_text_id", unique: true, using: :btree
   end
 
   create_table "measurements", force: :cascade do |t|
@@ -29,6 +30,7 @@ ActiveRecord::Schema.define(version: 20160517174317) do
     t.integer  "snapshot_id", null: false
     t.datetime "created_at",  null: false
     t.decimal  "value",       null: false
+    t.index ["series_id", "created_at"], name: "index_measurements_on_series_id_and_created_at", unique: true, using: :btree
     t.index ["series_id"], name: "index_measurements_on_series_id", using: :btree
     t.index ["snapshot_id"], name: "index_measurements_on_snapshot_id", using: :btree
   end
@@ -37,6 +39,7 @@ ActiveRecord::Schema.define(version: 20160517174317) do
     t.string "text_id", null: false
     t.string "name",    null: false
     t.string "unit",    null: false
+    t.index ["text_id", "unit"], name: "index_properties_on_text_id_and_unit", unique: true, using: :btree
   end
 
   create_table "series", force: :cascade do |t|
@@ -45,6 +48,7 @@ ActiveRecord::Schema.define(version: 20160517174317) do
     t.integer "property_id", null: false
     t.index ["location_id"], name: "index_series_on_location_id", using: :btree
     t.index ["property_id"], name: "index_series_on_property_id", using: :btree
+    t.index ["source_id", "location_id", "property_id"], name: "index_series_on_source_id_and_location_id_and_property_id", unique: true, using: :btree
     t.index ["source_id"], name: "index_series_on_source_id", using: :btree
   end
 
@@ -55,6 +59,7 @@ ActiveRecord::Schema.define(version: 20160517174317) do
     t.string "text_id", null: false
     t.string "name",    null: false
     t.json   "config"
+    t.index ["text_id"], name: "index_sources_on_text_id", unique: true, using: :btree
   end
 
   add_foreign_key "measurements", "series"

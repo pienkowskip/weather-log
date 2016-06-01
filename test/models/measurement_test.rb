@@ -29,4 +29,15 @@ class MeasurementTest < ActiveSupport::TestCase
 
     assert_equal BigDecimal('10.9'), record.value
   end
+
+  test 'should be uniq' do
+    record = Measurement.new(series: series(:first), snapshot: snapshots(:first), created_at: Time.at(0), value: 10)
+    record.save!
+
+    record = Measurement.new(series: series(:first), snapshot: snapshots(:first), created_at: Time.at(0), value: 20)
+    assert_not record.save
+
+    record.created_at = Time.at(1)
+    assert record.save
+  end
 end

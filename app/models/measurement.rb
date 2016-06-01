@@ -4,4 +4,5 @@ class Measurement < ApplicationRecord
 
   validates :created_at, :value, presence: true
   validates :value, numericality: true
+  validates :created_at, uniqueness: {scope: :series}
 end

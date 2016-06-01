@@ -6,5 +6,6 @@ class CreateMeasurements < ActiveRecord::Migration[5.0]
       t.datetime :created_at, null: false
       t.decimal :value, null: false
     end
+    add_index :measurements, [:series_id, :created_at], unique: true
   end
 end

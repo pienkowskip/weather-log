@@ -5,5 +5,6 @@ class CreateSeries < ActiveRecord::Migration[5.0]
       t.references :location, null: false
       t.references :property, null: false
     end
+    add_index :series, [:source_id, :location_id, :property_id], unique: true
   end
 end

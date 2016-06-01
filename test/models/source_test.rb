@@ -25,4 +25,15 @@ class SourceTest < ActiveSupport::TestCase
     record.reload
     assert_equal({'c' => [1, 2, {'d' => 'ddd'}], 'b' => 'ala ma kota', 'a' => 10}, record.config)
   end
+
+  test 'should be uniq' do
+    record = Source.new(text_id: 'ala_ma_kota', name: 'Ala ma kota')
+    record.save!
+
+    record = Source.new(text_id: 'ala_ma_kota', name: 'Ala ma kota')
+    assert_not record.save
+
+    record.text_id = 'other_source'
+    assert record.save
+  end
 end

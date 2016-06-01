@@ -7,7 +7,7 @@ class PropertyTest < ActiveSupport::TestCase
 
     record.text_id = 'wind_speed'
     record.name = '   '
-    record.unit = 'km/h'
+    record.unit = 'm/s'
     assert_not record.save
 
     record.text_id = 'not valid'
@@ -18,7 +18,18 @@ class PropertyTest < ActiveSupport::TestCase
     record.unit = nil
     assert_not record.save
 
-    record.unit = 'km/h'
+    record.unit = 'm/s'
+    assert record.save
+  end
+
+  test 'should be uniq' do
+    record = Property.new(text_id: 'wind_speed', name: 'Wind speed', unit: 'm/s')
+    record.save!
+
+    record = Property.new(text_id: 'wind_speed', name: 'Wind speed', unit: 'm/s')
+    assert_not record.save
+
+    record.unit = 'mph'
     assert record.save
   end
 end

@@ -27,4 +27,15 @@ class LocationTest < ActiveSupport::TestCase
     assert_equal BigDecimal('-20.088333'), record.latitude
     assert_equal BigDecimal('2500.75'), record.elevation
   end
+
+  test 'should be uniq' do
+    record = Location.new(text_id: 'ala_ma_kota', name: 'Ala ma kota')
+    record.save!
+
+    record = Location.new(text_id: 'ala_ma_kota', name: 'Ala ma kota')
+    assert_not record.save
+
+    record.text_id = 'other_location'
+    assert record.save
+  end
 end

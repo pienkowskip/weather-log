@@ -7,5 +7,6 @@ class CreateLocations < ActiveRecord::Migration[5.0]
       t.decimal :longitude
       t.decimal :elevation
     end
+    add_index :locations, :text_id, unique: true
   end
 end

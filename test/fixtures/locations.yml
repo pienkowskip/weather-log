@@ -4,3 +4,9 @@ rysy:
   latitude: 49.179444
   longitude: 20.088333
   elevation: 2503
+morskie_oko:
+  text_id: morskie_oko
+  name: Schronisko Morskie Oko
+  latitude: 49.201389
+  longitude: 20.071306
+  elevation: 1410

@@ -2,3 +2,7 @@ temperature:
   text_id: temperature
   name: Temperature
   unit: °C
+wind_speed:
+  text_id: wind_speed
+  name: Wind speed
+  unit: km/h

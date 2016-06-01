@@ -16,7 +16,18 @@ class SeriesTest < ActiveSupport::TestCase
     record.location = locations(:rysy)
     assert_not record.save
 
-    record.property = properties(:temperature)
+    record.property = properties(:wind_speed)
+    assert record.save
+  end
+
+  test 'should be uniq' do
+    record = Series.new(source: sources(:meteoblue), location: locations(:rysy), property: properties(:temperature))
+    record.save!
+
+    record = Series.new(source: sources(:meteoblue), location: locations(:rysy), property: properties(:temperature))
+    assert_not record.save
+
+    record.property = properties(:wind_speed)
     assert record.save
   end
 end

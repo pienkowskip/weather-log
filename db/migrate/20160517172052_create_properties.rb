@@ -5,5 +5,6 @@ class CreateProperties < ActiveRecord::Migration[5.0]
       t.string :name, null: false
       t.string :unit, null: false
     end
+    add_index :properties, [:text_id, :unit], unique: true
   end
 end

@@ -1,3 +1,6 @@
 topr:
   text_id: topr
   name: TOPR
+meteoblue:
+  text_id: meteoblue
+  name: Meteoblue (meteoblue.com)

@@ -5,5 +5,6 @@ class CreateSources < ActiveRecord::Migration[5.0]
       t.string :name, null: false
       t.json :config
     end
+    add_index :sources, :text_id, unique: true
   end
 end
