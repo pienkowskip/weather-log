@@ -1,0 +1,68 @@
+<lokalizacje>
+  <lokalizacja id="gor">
+    <nazwa>GORYCZKOWA</nazwa>
+    <dateTimeStr></dateTimeStr>
+    <nazwaSkr>gor</nazwaSkr>
+    <wysokosc></wysokosc>
+    <temperatura>
+      <aktualna>4.9</aktualna>
+      <max>8.2</max>
+      <min>4.9</min>
+    </temperatura>
+    <cisnienie></cisnienie>
+    <wilgotnosc></wilgotnosc>
+    <widzialnosc></widzialnosc>
+    <zachmurzenie></zachmurzenie>
+    <wiatr>
+      <kierunek></kierunek>
+      <silaMax></silaMax>
+      <silaAvg></silaAvg>
+      <poryw></poryw>
+    </wiatr>
+    <opad></opad>
+  </lokalizacja>
+  <lokalizacja id="ps">
+    <nazwa>PIEC STAWOW</nazwa>
+    <dateTimeStr>2016-04-04 20:10:00</dateTimeStr>
+    <nazwaSkr>ps</nazwaSkr>
+    <wysokosc></wysokosc>
+    <temperatura>
+      <aktualna>7.1</aktualna>
+      <max>11.5</max>
+      <min>6.5</min>
+    </temperatura>
+    <cisnienie></cisnienie>
+    <wilgotnosc></wilgotnosc>
+    <widzialnosc></widzialnosc>
+    <zachmurzenie></zachmurzenie>
+    <wiatr>
+      <kierunek>239.1667</kierunek>
+      <silaMax>12.3</silaMax>
+      <silaAvg>2.2166666666666663</silaAvg>
+      <poryw></poryw>
+    </wiatr>
+    <opad></opad>
+  </lokalizacja>
+  <lokalizacja id="mo">
+    <nazwa>MORSKIE OKO</nazwa>
+    <dateTimeStr>2016-04-04 20:10:00</dateTimeStr>
+    <nazwaSkr>mo</nazwaSkr>
+    <wysokosc></wysokosc>
+    <temperatura>
+      <aktualna>8.9</aktualna>
+      <max>16.8</max>
+      <min>8.7</min>
+    </temperatura>
+    <cisnienie></cisnienie>
+    <wilgotnosc></wilgotnosc>
+    <widzialnosc></widzialnosc>
+    <zachmurzenie></zachmurzenie>
+    <wiatr>
+      <kierunek>224.0000</kierunek>
+      <silaMax>7.6</silaMax>
+      <silaAvg>3.8833333333333333</silaAvg>
+      <poryw></poryw>
+    </wiatr>
+    <opad></opad>
+  </lokalizacja>
+</lokalizacje>

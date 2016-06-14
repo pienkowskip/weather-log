@@ -27,3 +27,6 @@
 
 # Ignore IDE.
 /.idea/*
+
+# Ignore code coverage reports.
+/coverage/*

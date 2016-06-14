@@ -27,7 +27,7 @@ class MeasurementTest < ActiveSupport::TestCase
     record.value = '10.9'
     assert record.save
 
-    assert_equal BigDecimal('10.9'), record.value
+    assert_equal BigDecimal.new!('10.9'), record.value
   end
 
   test 'should be uniq' do

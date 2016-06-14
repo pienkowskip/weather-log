@@ -6,7 +6,19 @@ rysy:
   elevation: 2503
 morskie_oko:
   text_id: morskie_oko
-  name: Schronisko Morskie Oko
+  name: Schronisko nad Morskim Okiem
   latitude: 49.201389
   longitude: 20.071306
   elevation: 1410
+piec_stawow:
+  text_id: piec_stawow
+  name: Schronisko w Dolinie Pięciu Stawów
+  latitude: 49.213611
+  longitude: 20.04875
+  elevation: 1671
+kasprowy_wierch:
+  text_id: kasprowy_wierch
+  name: Kasprowy Wierch (Obserwatorium)
+  latitude: 49.232528
+  longitude: 19.981833
+  elevation: 1987
