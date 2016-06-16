@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class BigDecimalTest < ActiveSupport::TestCase
+class BigDecimalExtTest < ActiveSupport::TestCase
   test 'should raise exceptions' do
     assert_equal 1, BigDecimal.new!(1)
     assert_equal BigDecimal.new('1.1'), BigDecimal.new!(1.1, 2)

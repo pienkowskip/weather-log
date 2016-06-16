@@ -2,6 +2,7 @@ require 'thread'
 require 'monitor'
 
 require_relative 'wget'
+require_relative '../../bigdecimal_ext'
 
 module Weather
   module Fetcher

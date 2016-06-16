@@ -8,6 +8,7 @@ class SnapshotTest < ActiveSupport::TestCase
     record.status = :invalid
     record.created_at = Time.now
     record.source = sources(:topr)
+    record.location = locations(:rysy)
     assert_not record.save
 
     record.status = :created
@@ -25,9 +26,15 @@ class SnapshotTest < ActiveSupport::TestCase
     assert_not record.save
 
     record.source = sources(:topr)
-    assert record.save
+    record.location = nil
+    assert_not record.save
+
+    record.location = Location.new
+    assert_not record.save
 
     record.location = locations(:rysy)
+    assert record.save
+
     record.media_type = 'text/plain'
     record.file = 'ala ma kota'
     record.error = 'some exception'

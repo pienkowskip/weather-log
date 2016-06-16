@@ -11,7 +11,7 @@ class CreateSnapshots < ActiveRecord::Migration[5.0]
 
     create_table :snapshots do |t|
       t.references :source, null: false
-      t.references :location, null: true
+      t.references :location, null: false
       t.datetime :created_at, null: false
       t.column :status, :snapshot_status, null: false
       t.string :media_type

@@ -1,4 +1,4 @@
-require 'bigdecimal'
+require_relative '../../bigdecimal_ext'
 
 module Weather
   module Parser
